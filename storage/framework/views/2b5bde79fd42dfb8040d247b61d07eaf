@@ -1,0 +1,17 @@
+<?php $__env->startSection('content'); ?>
+	<h1>Клиент № <?php echo e($client->id); ?></h1>
+	<p>
+		<b>ФИО:</b>
+		......................
+		<?php echo e($client->secondname); ?> <?php echo e($client->firstname); ?> <?php echo e($client->thirdname); ?>
+
+	</p>
+	<p>
+		<b>Телефон:</b>
+		......................
+		<?php echo e($client->phone); ?>
+
+	</p>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

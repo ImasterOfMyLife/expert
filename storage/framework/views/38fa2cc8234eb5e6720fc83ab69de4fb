@@ -1,0 +1,22 @@
+<?php $__env->startSection('content'); ?>
+<h1>Добавить нового клиента</h1>
+<hr>
+
+<div class="col-sm-4">
+<?php echo Form::open(['url' => 'clients']); ?>
+
+
+<?php echo $__env->make('clients.form',['submitButtonText' => 'Добавить нового клиента'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php echo Form::close(); ?>
+
+
+<?php echo $__env->make('errors.list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</div>
+<?php $__env->stopSection(); ?>
+
+
+
+
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,55 @@
+<?php $__env->startSection('content'); ?>
+<h1>Добавить нового клиента</h1>
+<hr>
+
+<div class="col-sm-4">
+<?php echo Form::open(['url' => 'clients']); ?>
+
+<div class="form-group">
+	<?php echo Form::label('secondname', 'Фамилия:'); ?>
+
+	<?php echo Form::text('secondname', null, ['class' => 'form-control']); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('firstname', 'Имя:'); ?>
+
+	<?php echo Form::text('firstname', null, ['class' => 'form-control']); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('secondname', 'Отчество:'); ?>
+
+	<?php echo Form::text('thirdname', null, ['class' => 'form-control']); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('phone', 'Телефон:'); ?>
+
+	<?php echo Form::text('phone', null, ['class' => 'form-control']); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::label('comment', 'Комментарий:'); ?>
+
+	<?php echo Form::textarea('comment', null, ['class' => 'form-control']); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::submit('Добавить клиента', ['class' => 'btn btn-primary form-control']); ?>
+
+</div>
+<?php echo Form::close(); ?>
+
+
+<?php if($errors->any()): ?>
+	<ul class="alert alert-danger">
+		<?php foreach($errors->all() as $error): ?>
+			<li><?php echo e($error); ?></li>
+		<?php endforeach; ?>
+	</ul>
+<?php endif; ?>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

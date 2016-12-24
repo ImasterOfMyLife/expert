@@ -1,0 +1,67 @@
+<?php $__env->startSection('content'); ?>
+<h1>Создать новое дело</h1>
+<hr>
+
+<div class="col-sm-4">
+<?php echo Form::open(['url' => 'cases']); ?>
+
+
+<div class="form-group">
+	<?php echo Form::label('cliFullName', 'ФИО:'); ?>
+
+	<?php echo Form::text('cliFullName', null, ['class' => 'form-control']); ?>
+
+	<input type="hidden" name="client_id">
+	<input type="hidden" name="status_id" value="1">
+</div>
+
+
+
+<div class="form-group">
+	<?php echo Form::label('casetype_id', 'Тип дела:'); ?>
+
+	<?php echo Form::select('casetype_id', $casetypes, null, ['class' => 'form-control' ]); ?>
+
+<!--	<input type="hidden" name="casetype_id">-->
+</div>
+
+
+
+<div class="form-group">
+	<?php echo Form::label('check_date', 'Срок напоминания:'); ?>
+
+	<div class='input-group date' id='datetimepicker2'>
+		<?php echo Form::input('text', 'check_date', null, ['class' => 'form-control']); ?>
+
+		<span class="input-group-addon">
+			<span class="glyphicon glyphicon-calendar"></span>
+		</span>
+	</div>
+</div>
+<div class="form-group">
+	<?php echo Form::label('comment', 'Комментарий:'); ?>
+
+	<?php echo Form::textarea('comment', null, ['class' => 'form-control']); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::submit('Сохранить', ['class' => 'btn btn-primary form-control']); ?>
+
+</div>
+<div class="form-group">
+	<a href="<?php echo e(url('cases')); ?>" class="btn btn-primary form-control">Отмена</a>	
+</div>
+<?php echo Form::close(); ?>
+
+
+<?php echo $__env->make('errors.list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</div>
+<?php $__env->stopSection(); ?>
+
+
+
+
+
+
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

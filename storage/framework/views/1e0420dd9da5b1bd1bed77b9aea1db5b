@@ -1,0 +1,50 @@
+<?php $__env->startSection('content'); ?>
+<h1>Текущие дела</h1>
+<div class="row">
+	<div class="col-sm-4">
+		<a href="<?php echo e(action('CasesController@create')); ?>" class="btn btn-primary form-control">Создать новое дело</a>	
+	</div>
+	<div class="col-sm-4">
+		<a href="<?php echo e(url('/')); ?>" class="btn btn-primary form-control">Главная</a>	
+	</div>
+</div>
+
+
+
+
+	<div class="table-responsive">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>	
+				<th>Ф.И.О клиента</th>
+				<th>Телефон клиента</th>
+				<th>Тип дела</th>
+				<th>Статус дела</th>		
+				<th>Последнее изменение</th>
+				<th>Срок уведомления</th>
+			</tr>	
+		</thead>
+		<tbody>
+			<?php foreach($cases as $case): ?>
+			<tr>
+				<td><a href="<?php echo e(action('CasesController@edit', $case->id)); ?>"><?php echo e($case->id); ?></a></td>
+				<td class="left"><?php echo e($case->client->secondname); ?> <?php echo e($case->client->firstname); ?> <?php echo e($case->client->thirdname); ?></td>
+				<td><?php echo e($case->client->phone); ?></td>
+				<td><?php echo e($case->casetype->type); ?></td>
+				<td><?php echo e($case->status->status); ?></td>
+
+				<td class="updated_at"><?php echo e($case->updated_at->format('d-m-Y')); ?></td>
+				<?php if($case->check_date->isPast()): ?>
+					<td class="cell_red"><?php echo e($case->check_date->format('d-m-Y')); ?></td>
+				<?php else: ?>
+					<td><?php echo e($case->check_date->format('d-m-Y')); ?></td>	
+				<?php endif; ?>
+			</tr>
+			<?php endforeach; ?>	
+		</tbody>	
+	</table>
+	</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,39 @@
+<?php $__env->startSection('content'); ?>
+<h1>Клиенты</h1>
+<div class="row">
+	<div class="col-sm-4">
+		<a href="<?php echo e(action('ClientsController@create')); ?>" class="btn btn-primary form-control">Создать нового клиента</a>	
+	</div>
+	<div class="col-sm-4">
+		<a href="<?php echo e(url('/')); ?>" class="btn btn-primary form-control">Главная</a>	
+	</div>
+</div>
+
+
+	<div class="table-responsive">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>	
+				<th>Фамилия</th>
+				<th>Имя</th>
+				<th>Отчество</th>		
+				<th>Телефон</th>
+			</tr>	
+		</thead>
+		<tbody>
+			<?php foreach($clients as $client): ?>
+			<tr>
+				<td><a href="<?php echo e(action('ClientsController@edit', $client->id)); ?>"><?php echo e($client->id); ?></a></td>
+				<td><?php echo e($client->secondname); ?></td>
+				<td><?php echo e($client->firstname); ?></td>
+				<td><?php echo e($client->thirdname); ?></td>
+				<td><?php echo e($client->phone); ?></td>
+			</tr>
+			<?php endforeach; ?>	
+		</tbody>	
+	</table>
+	</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

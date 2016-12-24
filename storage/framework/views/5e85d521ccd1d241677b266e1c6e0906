@@ -1,0 +1,72 @@
+<?php $__env->startSection('content'); ?>
+<h1>Редактирование дела № <?php echo e($case->id); ?></h1>
+<hr>
+
+<div class="col-sm-4">
+	<?php echo Form::open(['method' => 'PATCH', 'action' => ['CasesController@update', $case->id]]); ?>
+
+<div class="form-group">
+	<?php echo Form::label('cliFullName', 'Клиент:'); ?>
+
+	<?php echo Form::text('cliFullName', $case->client->secondname .' '.$case->client->firstname .' '. $case->client->thirdname, ['class' => 'form-control']); ?>
+
+	<input type="hidden" name="client_id" value=" <?php echo e($case->client->id); ?> " >
+</div>
+
+
+
+<div class="form-group">
+	<?php echo Form::label('casetype_id', 'Тип дела:'); ?>
+
+	<?php echo Form::select('casetype_id', $casetypes, $case->casetype->id, ['class' => 'form-control']); ?>
+
+</div>
+
+<div class="form-group">
+	<?php echo Form::label('status_id', 'Статус дела:'); ?>
+
+	<?php echo Form::select('status_id', $casestatuses, $case->status->id, ['class' => 'form-control']); ?>
+
+</div>
+
+
+
+<div class="form-group">
+	<?php echo Form::label('check_date', 'Срок напоминания:'); ?>
+
+	<div class='input-group date' id='datetimepicker2'>
+		<?php echo Form::input('text', 'check_date', $case->check_date, ['class' => 'form-control']); ?>
+
+		<span class="input-group-addon">
+			<span class="glyphicon glyphicon-calendar"></span>
+		</span>
+	</div>
+</div>
+<div class="form-group">
+	<?php echo Form::label('comment', 'Комментарий:'); ?>
+
+	<?php echo Form::textarea('comment', $case->comment, ['class' => 'form-control']); ?>
+
+</div>
+<div class="form-group">
+	<?php echo Form::submit('Сохранить', ['class' => 'btn btn-primary form-control']); ?>
+
+</div>
+<div class="form-group">
+	<a href="<?php echo e(url('cases')); ?>" class="btn btn-primary form-control">Отмена</a>	
+</div>
+
+<?php echo Form::close(); ?>
+
+
+<?php echo $__env->make('errors.list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</div>
+<?php $__env->stopSection(); ?>
+
+
+
+
+
+
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

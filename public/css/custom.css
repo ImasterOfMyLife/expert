@@ -1,0 +1,39 @@
+th{
+	text-align: center;
+}
+
+td{
+	text-align: center;
+}
+
+td.left{
+	text-align: left;
+}
+
+.cell_red{
+	background-color: red;
+	font-weight: bold;
+}
+
+.cell_yellow{
+	background-color: yellow;
+}
+
+.main-wrap{
+	position: absolute;
+	top: 40%;
+}
+
+.main-wrap span{
+	padding-right: 5px;
+}
+
+
+.main-butons{
+	display: block;
+	text-align: center;
+	line-height: 185px;
+	height: 200px;
+	font-size: 35px;
+	text-transform: uppercase;
+}
